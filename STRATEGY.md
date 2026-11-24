@@ -95,7 +95,7 @@ If the course adds or emphasizes new topics:
 - **Dimensionality reduction (PCA)** — could be a standalone project or added to P10
 - **Policy gradient methods** — could extend P11 with REINFORCE
 - **Attention / Transformer** — if course covers it, would need a new project (P12)
-- **Multi-class classification** — currently a stretch goal in P08; could become a standalone project
+- **Multi-class classification** — now a core exercise in P08 (One-vs-All); could be extended with other strategies (softmax regression, one-vs-one)
 
 ## Validation Checklist
 

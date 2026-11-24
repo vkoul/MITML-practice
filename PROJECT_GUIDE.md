@@ -96,6 +96,7 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Vary λ from 0.001 to 1.0 — observe margin width change
 - Side-by-side: perceptron boundary vs SVM boundary on the same data
 - Margin lines (dashed) visualization
+- **Regularization path:** Train SVMs across 20 log-spaced λ values, plot how coefficients shrink toward zero
 
 ---
 
@@ -118,6 +119,8 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Degree-10 polynomial features with λ ∈ {0, 0.01, 0.1, 10}
 - Train vs test MSE comparison
 - GD convergence curve
+- **K-fold cross-validation:** Implement `k_fold_cv()` to select the best λ via 5-fold CV
+- **Learning curves:** Train/test MSE vs dataset size — diagnose overfitting/underfitting
 
 ---
 
@@ -139,6 +142,7 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Circles dataset + XOR dataset (both non-linearly separable)
 - γ sweep: 0.1 (underfitting) → 20 (overfitting)
 - Polynomial vs RBF kernel comparison on same data
+- **Computational cost:** Time kernel matrix computation for n=[50..800], verify O(n²) scaling on log-log plot
 
 ---
 
@@ -162,6 +166,10 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Hidden size sweep: 2, 4, 16, 64
 - Moons dataset (easy) vs spiral dataset (hard — tests network limits)
 - Loss curve visualization
+- **Gradient checking:** Numerical gradient verification for all weight matrices and biases
+- **Data normalization:** Compare training with/without feature standardization — observe convergence speed difference
+- **Learning curves:** Accuracy vs dataset size to diagnose overfitting
+- **Debugging challenge:** BuggyNet with 3 intentional backprop bugs to find and fix
 
 ---
 
@@ -184,6 +192,8 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Text generation at different temperatures (0.3 → 1.5)
 - Hidden size comparison: 16, 64, 128
 - Observe how generated text improves with training
+- **Gradient checking:** Numerical gradient verification for all RNN parameters (Wxh, Whh, Why, bh, by)
+- **Debugging challenge:** BuggyRNN with 2 intentional forward pass bugs to find and fix
 
 **Provided for you:** Text sampling function, gradient clipping, softmax
 
@@ -208,6 +218,7 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Edge detection with horizontal/vertical Sobel-like filters
 - Hand-crafted filters vs random filters on line classification
 - Translation invariance demo: same filter responds regardless of position
+- **Reference implementation:** `naive_conv2d` (4 nested loops) for correctness verification against optimized `conv2d`
 
 ---
 
@@ -218,16 +229,24 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 **You do:**
 - Load MNIST digits (3 vs 8) — a real dataset
 - Adapt models from Projects 1–7 to 64-dimensional input
-- Compare: perceptron, SVM, kernel perceptron, neural network
+- Compare: perceptron, SVM, kernel perceptron, neural network using a standard evaluation framework
+- Extend to all 10 digits using One-vs-All (OvA) multi-class classification
 - Write a mini-report with findings
 
 **Key ideas:**
 - Real data is messier than synthetic data
 - Simple models can be surprisingly competitive
-- Model comparison requires consistent train/test splits
+- Model comparison requires consistent train/test splits and metrics (accuracy, precision, recall, F1)
 - The "best" model depends on what you're optimizing for
+- OvA turns any binary classifier into a multi-class one
 
-**Stretch goals:** Multi-class (10 digits), confusion matrix, PCA visualization, learning curves
+**Evaluation framework (provided):**
+- `evaluate_model()` — computes accuracy, precision, recall, F1 for each model
+- `confusion_matrix()` — 2×2 confusion matrix for binary classification
+- Formatted results table and bar chart comparison
+- Side-by-side confusion matrix visualization
+
+**Stretch goals:** PCA visualization, learning curves, CNN features as feature extractor
 
 ---
 
@@ -279,6 +298,7 @@ The selection rule: **if the course tests it, you implement it.** Hinge loss gra
 - Elbow method for choosing K
 - Initialization sensitivity (multiple random seeds)
 - Side-by-side K-Means vs GMM on elliptical clusters with confidence ellipses
+- **Computational cost:** Time K-Means vs n (fix K=3) and vs K (fix n=1000) — verify linear scaling
 
 ---
 
